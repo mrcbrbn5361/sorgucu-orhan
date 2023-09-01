@@ -1,4 +1,3 @@
-
 module.exports = {
 
     name: "ready",
@@ -8,8 +7,8 @@ module.exports = {
      * @returns {Promise<void>}
      */
     onLoad: async function (message) {
-	client.guilds.cache.map(x => {
-		x.members.fetch()
-	})      
+        if (!client.guilds.cache.size) return;
+        client.guilds.cache.map(async guild => {
+            await guild.members.fetch();
+        });
     }
-}
