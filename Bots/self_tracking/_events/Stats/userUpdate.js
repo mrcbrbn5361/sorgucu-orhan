@@ -1,4 +1,3 @@
-
 const { Message } = require('discord.js-selfbot-v13');
 let { Stats, Seens } = require('../../../../Databases/Tracking');
 module.exports = {
@@ -16,20 +15,27 @@ module.exports = {
         if(!oldUsername) return;
         if(!newUsername) return;
 
-        await Seens.updateOne({userID: user.id}, {
-            $set: {
+        const seenData = await Seens.findOne({userID: user.id});
+        if (!seenData) {
+            seenData = {
+                userID: user.id,
                 lastSeen: Date.now(),
                 lastType: `NAME CHANGE`,
                 lastName: newUsername,
-            },
-            $push: {
-                lastNames: {
-                    date: Date.now(),
-                    old: oldUsername,
-                    new: newUsername
-                }
-            }
-        }, {upsert: true});
+                lastNames: [],
+            };
+        }
+        
+        seenData.lastSeen = Date.now();
+        seenData.lastType = `NAME CHANGE`;
+        seenData.lastName = newUsername;
+        seenData.lastNames.push({
+            date: Date.now(),
+            old: oldUsername,
+            new: newUsername
+        });
+        
+        await Seens.updateOne({userID: user.id}, seenData);
       
     }
 }
