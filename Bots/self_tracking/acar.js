@@ -1,4 +1,4 @@
-let { ACAR } = require('../../Clients/Global.Clients')
+const { ACAR } = require('discord.js-selfbot@2.14')
 
 let client = global.client = new ACAR({
     token: "",
