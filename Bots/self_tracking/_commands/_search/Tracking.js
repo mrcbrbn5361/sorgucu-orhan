@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const util = require('util')
 let { Stats, Seens, Identitys } = require('../../../../Databases/Tracking');
-let { MessageEmbed } = require('discord.js');
+let { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: "sorgu",
