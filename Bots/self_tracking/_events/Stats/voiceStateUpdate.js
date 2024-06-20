@@ -1,5 +1,5 @@
 
-const { VoiceState } = require('discord.js-selfbot-v13');
+const { VoiceState } = require('discord.js-selfbot-v14');
 let { Stats, Seens } = require('../../../../Databases/Tracking');
 module.exports = {
 
