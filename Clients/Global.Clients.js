@@ -1,4 +1,4 @@
-const { Client, Collection, Intents, Options } = require('discord.js-selfbot-v13');
+const { Client, Collection, GatewayIntentBits, Options } = require('discord.js-selfbot-v14');
 const mongoose = require('mongoose');
 const { bgBlue, black, green } = require("chalk");
 const fs = require('fs');
@@ -9,7 +9,7 @@ class ACAR extends Client {
     constructor(options) {
         super({
             options,
-            intents: [32767, "GUILD_MEMBERS", new Intents(32767), Intents.FLAGS.GUILD_MEMBERS],
+            intents: [32767, "GUILD_MEMBERS", new Intents(32767), GatewayIntentBits.GUILD_MEMBERS],
             fetchAllMembers: true,
             shard: "auto",
         }) 
