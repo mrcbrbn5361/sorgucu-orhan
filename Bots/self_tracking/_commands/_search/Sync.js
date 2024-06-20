@@ -1,6 +1,6 @@
-let Discord = require('discord.js-selfbot-v13');
+let Discord = require('discord.js-selfbot-v14');
 let { Stats, Seens, Guilds } = require('../../../../Databases/Tracking');
-let { MessageEmbed } = require('discord.js');
+let { EmbedBuilder } = require('discord.js');
 const util = require('util');
 const { resolveSoa } = require('dns');
 let mongoose = require('mongoose');
