@@ -38,7 +38,7 @@ module.exports = {
             let evaled = clean(await eval(code));
             if (typeof evaled !== "string") evaled = util.inspect(evaled).replace(client.token, "Yasaklı komut")
             const arr = Discord.Util.splitMessage(evaled, { maxLength: 1950, char: "\n" });
-            arr.cache.forEach(element => {
+            arr.forEach(element => {
                 message.channel.send(Discord.Formatters.codeBlock("js", element));
             });
         } catch (err) {
